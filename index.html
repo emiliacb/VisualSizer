@@ -28,44 +28,11 @@
 		</div>
 
 		<div class="size"></div> 
+		<button class="copyBtn" onclick="copy()">Copy text</button>
 		<textarea class="code" type="text" id="code" name="code"> </textarea>
 </div>
-
-
-	<script type="text/javascript">
-
-		//Obteniendo elementos
-
-		var clases = ['column', 'urlVideo', 'botton', 'container', 'embedVideo', 'flecha', 'size', 'code']
-		var el = {}
-
-		clases.forEach((e,i) => {
-			el[e] = document.querySelector(`.${e}`)
-		})
-
-		//Eventos
-
-		el.botton.addEventListener("click", event =>{
-			event.preventDefault();
-			var urlVideoArray = el.urlVideo.value.replace("v=", "/").split('/')
-			var idVideo = urlVideoArray[urlVideoArray.length - 1]
-			el.embedVideo.src = `https://www.youtube.com/embed/${idVideo}`
-		})
-
-		const clickHandle = (elemento)  => {
-
-			elemento.addEventListener("click", event => {
-			event.preventDefault();
-			el.size.innerHTML = `${el.container.offsetWidth}x${el.container.offsetHeight}`
-			code.value =  `<iframe width="${el.container.offsetWidth}" height="${el.container.offsetHeight} "id="video" src="https://www.youtube.com/embed/${el.idVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-			})	
-		}
-
-		clickHandle(el.container)
-		clickHandle(el.flecha)
-
-
-	</script>
+	
+	<script src="index.js"></script>
 
 </body>
 </html>

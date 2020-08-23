@@ -13,14 +13,18 @@ body {
 
 h1{
 	font-family: 'Alata', sans-serif;
-	padding: 20px;
+	padding: 10px;
 	border-bottom: 2px solid rgb(0,0,0,0.1);
 	font-size: 50px;
+	max-width: 700px;
+	margin: auto;
+	transition: 1s;
 }
 
 p {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
+	margin: 0 20px 0 20px;
 }
 
 .column {
@@ -29,12 +33,13 @@ p {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	padding-top: 50px
+	padding-top: 10px
 }
 
 .urlVideo {
 	width: 60%;
 	max-width:  400px;
+	min-width: 350px;
 	margin: auto;
 	margin-top: 50px;
 	padding: 7px;
@@ -44,14 +49,17 @@ p {
 
 .botton {
 	width: 200px;
-	margin: auto;
+	margin: auto;	
 	margin-top: 10px;
 	background-color: #f2d6e3;
 	padding: 5px;
 	border: 1px solid rgb(0,0,0,0.1);
-	border-radius: 15px;
+	border-radius: 10px;
 	text-transform: uppercase;
-	font-family: 'Alata', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 4px;
 }
 
 .botton:hover {
@@ -59,7 +67,8 @@ p {
 }
 
 .botton:active {
-	background-color: #d2d6e3;
+	background-color: tomato;
+	color: white;
 }
 
 .container {
@@ -94,26 +103,56 @@ p {
 }
 
 .size {
-	width: 130px;
-	height: 30px;
+	width: 100px;
+	height: 20px;
 	margin: auto;
-	margin-top: 30px;
+	margin-top: 10px;
 	background-color: #9e9f95;
 	color: white;
 	text-transform: uppercase;
 	font-family: arial;
 	text-align: center;
-	font-size: 28px;
+	font-size: 18px;
 	padding: 5px;
 	border-radius: 10px;
 }
 
+.copyBtn {
+	width: 80px;
+	height: 30px;
+	border-radius: 10px;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 4px;
+	margin: auto;
+	margin-bottom: -30px;
+	z-index: 20;
+	transform: translate(120px);
+	background-color: #f2d6e3;
+}
+
+.copyBtn:hover {
+	background-color: #e2d6e3;
+}
+
+.copyBtn:active {
+	background-color: tomato;
+	color: white;
+}
+
+
 .code {
 	width: 300px;
-	height: 130px;
+	height: 70px;
 	margin: auto;
 	margin-top: 10px;
 	resize: none;
 	padding: 10px;
 	border-radius: 10px;
+	overflow: hidden;
+	font-size: 10px;
+	text-align: left;
 }
+

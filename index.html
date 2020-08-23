@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<title>VisualSizer</title>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" type="text/css" href="index.css">
+			<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+			<title>VisualSizer</title>
 </head>
 <body>
 	
 <div class="column">
-	<h2>VisualSizer</h2>
-	<input class="urlVideo" value="https://www.youtube.com/watch?v=QU2893TnTbU" type="text"><input value="Paste video" class="botton" type="submit">
-	<div class="container">
-			<iframe class="embedVideo"src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-	<div class="size"></div> 
-	<textarea class="code" type="text" id="code" name="code"> </textarea>
+
+		<header>
+				<h1>VisualSizer</h1>
+				<p>This app allow you to obtain the code to embed a youtube video, resizing it in a visual form.</p>
+		</header>
+
+		<form>
+			<input class="urlVideo" value="https://www.youtube.com/watch?v=QU2893TnTbU" type="text">
+			<input value="Paste video" class="botton" type="submit">
+		</form>
+	
+		<div class="container">
+				<iframe class="embedVideo"src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<div class="flecha"></div>
+		</div>
+
+		<div class="size"></div> 
+		<textarea class="code" type="text" id="code" name="code"> </textarea>
 </div>
 
 
 	<script type="text/javascript">
-		const cuadrado = document.querySelector('.container');
-		const size = document.querySelector('.size'); 
-		const code = document.querySelector('.code')
-		const botton = document.querySelector('.botton')
-		const urlForm = document.querySelector('.urlVideo')
-		const embedVideo = document.querySelector('.embedVideo')
-		var  idVideo= ''
-		var urlVideo = ''
 
-		botton.addEventListener("click", e =>{
-			e.preventDefault();
-			urlVideo = urlForm.value.replace("v=", "/").split('/')
-			idVideo = urlVideo[urlVideo.length - 1]
-			embedVideo.src = `https://www.youtube.com/embed/${idVideo}`
+		//Obteniendo elementos
+
+		var clases = ['column', 'urlVideo', 'botton', 'container', 'embedVideo', 'flecha', 'size', 'code']
+		var el = {}
+
+		clases.forEach((e,i) => {
+			el[e] = document.querySelector(`.${e}`)
 		})
 
-		cuadrado.addEventListener("click", e => {
-			e.preventDefault();
-			size.innerHTML = `${cuadrado.offsetWidth}x${cuadrado.offsetHeight}`
-			code.value =  `<iframe width="${cuadrado.offsetWidth}" height="${cuadrado.offsetHeight} "id="video" src="https://www.youtube.com/embed/${idVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+		//Eventos
+
+		el.botton.addEventListener("click", event =>{
+			event.preventDefault();
+			var urlVideoArray = el.urlVideo.value.replace("v=", "/").split('/')
+			var idVideo = urlVideoArray[urlVideoArray.length - 1]
+			el.embedVideo.src = `https://www.youtube.com/embed/${idVideo}`
 		})
 
+		const clickHandle = (elemento)  => {
+
+			elemento.addEventListener("click", event => {
+			event.preventDefault();
+			el.size.innerHTML = `${el.container.offsetWidth}x${el.container.offsetHeight}`
+			code.value =  `<iframe width="${el.container.offsetWidth}" height="${el.container.offsetHeight} "id="video" src="https://www.youtube.com/embed/${el.idVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+			})	
+		}
+
+		clickHandle(el.container)
+		clickHandle(el.flecha)
 
 
 	</script>

@@ -8,7 +8,7 @@
 			el[e] = document.querySelector(`.${e}`);
 		})
 
-		//Eventos
+		//Eventos url
 		var urlVideoArray = [];
 		var idVideo= "";
 
@@ -38,10 +38,41 @@
 			el.code.select();
   			el.code.setSelectionRange(0, 99999);
   			document.execCommand('copy')
-  			setInterval(e => {
-				el.size.innerHTML = `${el.container.offsetWidth}x${el.container.offsetHeight}`;
+  			
+  			el.size.innerHTML = 'Copied!'
+  			el.size.style.backgroundColor = 'tomato'
+  			setTimeout(() => {
+  				el.size.innerHTML = "" + el.container.offsetWidth + " x " + el.container.offsetHeight;
 				el.size.style.backgroundColor = '#9e9f95'
-  			}, 800)
-  				el.size.innerHTML = 'Copied!'
-  				el.size.style.backgroundColor = 'tomato'
-		}
+  			},800)
+  		}
+
+
+
+	//Resize
+
+	const  resizeX = e => {
+				if (el.container.style.width.replace('px','') < 1200) {
+					el.container.style.width = Math.ceil(((el.flecha.getBoundingClientRect().x - e.clientX - 100 ) * -2)) + 'px';
+					el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+				} else { 
+					el.container.style.width = '1000px'
+				}
+			}
+
+
+	const removeResize = e => {
+			window.removeEventListener('mousemove', resizeX)
+			window.removeEventListener('mouseup', removeResize)
+			el.container.removeEventListener('mouseup', removeResize)
+			el.flecha.style.right = '-1px'
+			el.flecha.style.bottom = '-1px'
+	}
+
+	// Evento
+
+		el.flecha.addEventListener('mousedown', (e) => {
+			window.addEventListener('mousemove', resizeX)
+			el.container.addEventListener('mousemove', resizeX)
+			window.addEventListener('mouseup', removeResize)
+	})

@@ -52,7 +52,7 @@
 	//Resize
 var mousePrev = 0
 var mouseTouchPrev = 0
-var containerPrev  =-160
+var containerPrev  =-145
 
 	const  resizeX = e => {
 				el.container.style.width = (containerPrev + (mousePrev - e.clientX)) * -1 + 'px'
@@ -67,15 +67,17 @@ var containerPrev  =-160
 
 
 	const removeResize = e => {
+
+			el.size.innerHTML = `${el.container.offsetWidth}x${el.container.offsetHeight}`;
+			el.code.value =  `<iframe width="${el.container.offsetWidth}" height="${el.container.offsetHeight} "id="video" src="https://www.youtube.com/embed/${idVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
 			window.removeEventListener('mousemove', resizeX)
-			window.removeEventListener('mouseup', removeResize)
-			el.container.removeEventListener('mouseup', removeResize)
+			el.container.removeEventListener('mousemove', resizeXTouch)
+			el.flecha.removeEventListener('mousemove', resizeXTouch)
 			
 			window.removeEventListener('touchmove', resizeXTouch)
 			el.container.removeEventListener('touchmove', resizeXTouch)
-			window.removeEventListener('touchend', removeResize)
-			
-
+			el.flecha.removeEventListener('touchmove', resizeXTouch)	
 	}
 
 	// Evento
@@ -86,6 +88,8 @@ var containerPrev  =-160
 
 			window.addEventListener('mousemove', resizeX)
 			el.container.addEventListener('mousemove', resizeX)
+			el.flecha.addEventListener('mousemove', resizeX)
+
 			window.addEventListener('mouseup', removeResize)
 	})
 
@@ -95,5 +99,9 @@ var containerPrev  =-160
 			
 			window.addEventListener('touchmove', resizeXTouch)
 			el.container.addEventListener('touchmove', resizeXTouch)
+			el.flecha.addEventListener('touchmove', resizeXTouch)
+
 			window.addEventListener('touchend', removeResize)
+
 	})
+

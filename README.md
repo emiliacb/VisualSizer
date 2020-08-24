@@ -5,7 +5,7 @@ https://em3c2.github.io/VisualSizer/
 
 ### Pendding:
 -  [x] Add "Copy" button 
--  [ ] Change CSS resize property with javascript vanilla functions, in order to mobile compatibility
+-  [x] Change CSS resize property with javascript vanilla functions, in order to mobile compatibility
 
 ### First version:
 
@@ -20,3 +20,8 @@ Better colors, added fonts, a bit more factoriced code.
 Added "Copy" buttom and more style changes.
 
 <img width="300px" src="./img/iter3.png">
+
+### Fourth version:
+Changed the "resize" from CSS to JS vainilla, I learned to much doing this.
+
+<img width="300px" src="./img/iter4.png">

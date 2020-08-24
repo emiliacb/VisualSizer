@@ -15,9 +15,7 @@
 		el.botton.addEventListener("click", event =>{
 			event.preventDefault();
 			urlVideoArray = el.urlVideo.value.replace("v=", "/").split('/');
-			console.log(el.urlVideo,urlVideoArray)
 			idVideo = urlVideoArray[urlVideoArray.length - 1];
-			console.log('idVideo')
 			el.embedVideo.src = `https://www.youtube.com/embed/${idVideo}`;
 		})
 
@@ -50,56 +48,74 @@
 
 
 	//Resize
-var mousePrev = 0
-var mouseTouchPrev = 0
-var containerPrev  =-145
+var mouseXPrev = 0
+var mouseYPrev = 0
+var mouseTouchXPrev = 0
+var mouseTouchYPrev = 0
+var containerXPrev  = 160
+var containerYPrev  = 90
 
 	const  resizeX = e => {
-				el.container.style.width = (containerPrev + (mousePrev - e.clientX)) * -1 + 'px'
-				el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+				el.container.style.width =(containerXPrev * -0.9 + (mouseXPrev - e.screenX)) * (-1* e.screenX/650) + 'px'
+				//el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+				el.container.style.height = (containerYPrev * -1.9 + (mouseYPrev - e.screenY)) * (-1* e.screenY/600) + 'px'
 			}
 
 	const  resizeXTouch = e => {
-				el.container.style.width = (containerPrev + (mouseTouchPrev - e.changedTouches[0].clientX))  * -1.3 + 'px'
-				el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+				el.container.style.width = (containerXPrev * -0.9+ (mouseTouchXPrev - e.changedTouches[0].screenX)) *  (-1* e.changedTouches[0].screenX /600)  +  'px'
+				//el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+				el.container.style.height = (containerYPrev * -1.9 + (mouseTouchYPrev - e.changedTouches[0].screenY)) * (-1*  e.changedTouches[0].screenY /800) + 'px'
 			}
 
 
 
 	const removeResize = e => {
+			e.preventDefault()
 
 			el.size.innerHTML = `${el.container.offsetWidth}x${el.container.offsetHeight}`;
 			el.code.value =  `<iframe width="${el.container.offsetWidth}" height="${el.container.offsetHeight} "id="video" src="https://www.youtube.com/embed/${idVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+			setTimeout(()=>{
+						el.flecha.removeEventListener('mousemove', resizeX)
+						window.removeEventListener('mousemove', resizeX)
+						el.container.removeEventListener('mousemove', resizeX)
+						el.embedVideo.removeEventListener('mousemove', resizeX)
+						
+						el.flecha.removeEventListener('touchmove', resizeXTouch)
+						window.removeEventListener('touchmove', resizeXTouch)
+						el.container.removeEventListener('touchmove', resizeXTouch)
+						el.embedVideo.removeEventListener('mousemove', resizeXTouch)
 
-			window.removeEventListener('mousemove', resizeX)
-			el.container.removeEventListener('mousemove', resizeXTouch)
-			el.flecha.removeEventListener('mousemove', resizeXTouch)
-			
-			window.removeEventListener('touchmove', resizeXTouch)
-			el.container.removeEventListener('touchmove', resizeXTouch)
-			el.flecha.removeEventListener('touchmove', resizeXTouch)	
+						containerXPrev  = el.container.style.width.replace('px','')  - 80
+						containerYPrev  = el.container.style.height.replace('px','')  + 30 
+			},20)			
 	}
 
 	// Evento
 
 		el.flecha.addEventListener('mousedown', (e) => {
-			
-			mousePrev = e.clientX
+			console.log('se hizo click')
+			mouseXPrev = e.screenX
+			mouseYPrev = e.screenY
 
 			window.addEventListener('mousemove', resizeX)
 			el.container.addEventListener('mousemove', resizeX)
 			el.flecha.addEventListener('mousemove', resizeX)
+			el.embedVideo.addEventListener('mousemove', resizeX)
 
 			window.addEventListener('mouseup', removeResize)
+			console.log('ya están los eventos')
 	})
 
 		el.flecha.addEventListener('touchstart', (e) => {
 
-			mouseTouchPrev = e.changedTouches[0].clientX
-			
+			mouseTouchXPrev = e.changedTouches[0].screenX
+			mouseTouchYPrev = e.changedTouches[0].screenY
+
+
 			window.addEventListener('touchmove', resizeXTouch)
 			el.container.addEventListener('touchmove', resizeXTouch)
 			el.flecha.addEventListener('touchmove', resizeXTouch)
+			el.embedVideo.addEventListener('touchmove', resizeXTouch)
 
 			window.addEventListener('touchend', removeResize)
 

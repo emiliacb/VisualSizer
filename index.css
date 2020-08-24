@@ -5,6 +5,7 @@
 	text-decoration: none;
 	justify-content: center;
 	user-select: none;
+	overflow: hidden;
 	}
 
 body {
@@ -39,10 +40,12 @@ p {
 .urlVideo {
 	width: 60%;
 	max-width:  400px;
-	min-width: 350px;
+	min-width: 300px;
 	margin: auto;
 	margin-top: 50px;
 	padding: 7px;
+	margin-right: 10px;
+	margin-left: 10px;
 	border: none;
 	border-radius: 10px;
 }
@@ -78,7 +81,6 @@ p {
 	width: 160px;
 	height: 90px;
 	display: flex;
-	resize:both;
     position: relative;
 }
 

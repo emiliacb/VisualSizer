@@ -50,29 +50,50 @@
 
 
 	//Resize
+var mousePrev = 0
+var mouseTouchPrev = 0
+var containerPrev  =-160
 
 	const  resizeX = e => {
-				if (el.container.style.width.replace('px','') < 1200) {
-					el.container.style.width = Math.ceil(((el.flecha.getBoundingClientRect().x - e.clientX - 100 ) * -2)) + 'px';
-					el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
-				} else { 
-					el.container.style.width = '1000px'
-				}
+				el.container.style.width = (containerPrev + (mousePrev - e.clientX)) * -1 + 'px'
+				el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
 			}
+
+	const  resizeXTouch = e => {
+				el.container.style.width = (containerPrev + (mouseTouchPrev - e.changedTouches[0].clientX))  * -1.3 + 'px'
+				el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
+			}
+
 
 
 	const removeResize = e => {
 			window.removeEventListener('mousemove', resizeX)
 			window.removeEventListener('mouseup', removeResize)
 			el.container.removeEventListener('mouseup', removeResize)
-			el.flecha.style.right = '-1px'
-			el.flecha.style.bottom = '-1px'
+			
+			window.removeEventListener('touchmove', resizeXTouch)
+			el.container.removeEventListener('touchmove', resizeXTouch)
+			window.removeEventListener('touchend', removeResize)
+			
+
 	}
 
 	// Evento
 
 		el.flecha.addEventListener('mousedown', (e) => {
+			
+			mousePrev = e.clientX
+
 			window.addEventListener('mousemove', resizeX)
 			el.container.addEventListener('mousemove', resizeX)
 			window.addEventListener('mouseup', removeResize)
+	})
+
+		el.flecha.addEventListener('touchstart', (e) => {
+
+			mouseTouchPrev = e.changedTouches[0].clientX
+			
+			window.addEventListener('touchmove', resizeXTouch)
+			el.container.addEventListener('touchmove', resizeXTouch)
+			window.addEventListener('touchend', removeResize)
 	})

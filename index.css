@@ -6,6 +6,7 @@
 	justify-content: center;
 	user-select: none;
 	overflow: hidden;
+	touch-action: none;
 	}
 
 body {
@@ -34,7 +35,8 @@ p {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	padding-top: 10px
+	padding-top: 10px;
+	margin: auto;
 }
 
 .urlVideo {
@@ -78,8 +80,9 @@ p {
 
 .container {
 	background-color: rgb(200,200,200);
-	margin: auto;
+	/*margin: auto;*/
 	margin-top: 30px;
+	margin-left: 25%;
 	transform: translateX(-13px);
 	width: 160px;
 	height: 90px;
@@ -94,6 +97,17 @@ p {
 	background-blend-mode: darken;
 }
 
+
+@media only screen and (max-width: 700px) {
+
+	h1 {
+		font-size: 35px;
+	}
+	.container {
+		margin-left: 20px;
+	}
+
+}
 
 
 .flecha{

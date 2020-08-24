@@ -56,15 +56,15 @@ var containerXPrev  = 160
 var containerYPrev  = 90
 
 	const  resizeX = e => {
-				el.container.style.width =(containerXPrev * -0.9 + (mouseXPrev - e.screenX)) * (-1* e.screenX/650) + 'px'
+				el.container.style.width =(containerXPrev * -1.3 + (mouseXPrev - e.screenX)) * -1 + 'px'
 				//el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
-				el.container.style.height = (containerYPrev * -1.9 + (mouseYPrev - e.screenY)) * (-1* e.screenY/600) + 'px'
+				el.container.style.height = (containerYPrev * -1.3 + (mouseYPrev - e.screenY)) * -1 + 'px'
 			}
 
 	const  resizeXTouch = e => {
-				el.container.style.width = (containerXPrev * -0.9+ (mouseTouchXPrev - e.changedTouches[0].screenX)) *  (-1* e.changedTouches[0].screenX /600)  +  'px'
+				el.container.style.width = (containerXPrev * -1.1+ (mouseTouchXPrev - e.changedTouches[0].screenX)) *  -1 +  'px'
 				//el.container.style.height = el.container.style.width.replace('px','') / 1.7 + 'px'
-				el.container.style.height = (containerYPrev * -1.9 + (mouseTouchYPrev - e.changedTouches[0].screenY)) * (-1*  e.changedTouches[0].screenY /800) + 'px'
+				el.container.style.height = (containerYPrev * -1.1 + (mouseTouchYPrev - e.changedTouches[0].screenY)) * -1 + 'px'
 			}
 
 
@@ -85,8 +85,8 @@ var containerYPrev  = 90
 						el.container.removeEventListener('touchmove', resizeXTouch)
 						el.embedVideo.removeEventListener('mousemove', resizeXTouch)
 
-						containerXPrev  = el.container.style.width.replace('px','')  - 80
-						containerYPrev  = el.container.style.height.replace('px','')  + 30 
+						containerXPrev  = el.container.style.width.replace('px','')  - 30
+						containerYPrev  = el.container.style.height.replace('px','')  - 30 
 			},20)			
 	}
 

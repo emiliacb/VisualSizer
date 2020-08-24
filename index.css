@@ -114,7 +114,7 @@ p {
 	content: "";
 	width: 800px;
 	height: 100%;
-	background-color: blue;
+	background-color: transparent;
 	position: absolute;
 	margin: auto;
 	bottom: 0px;

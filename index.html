@@ -8,7 +8,7 @@
 			<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 			<title>VisualSizer</title>
 </head>
-<body>
+<body class="body">
 	
 <div class="column">
 
@@ -16,6 +16,7 @@
 				<h1>VisualSizer</h1>
 				<p>This app allow you to obtain the code to embed a Youtube video, resizing it in a visual form.</p>
 		</header>
+
 
 		<form>
 			<input class="urlVideo" value="https://www.youtube.com/watch?v=QU2893TnTbU" type="text">
@@ -25,14 +26,15 @@
 		<div class="container">
 				<iframe class="embedVideo"src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<div class="flecha"></div>
+
 		</div>
-
-
 		<div class="size"></div> 
 		<button class="copyBtn" onclick="copy()">Copy</button>
 		<textarea class="code" type="text" id="code" name="code"> </textarea>
+		<br><br>
+		<p class="howToPlay">(Triple click to play the video)</p>
 </div>
-	
+
 	<script src="index.js"></script>
 
 </body>

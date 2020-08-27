@@ -18,7 +18,7 @@ https://em3c2.github.io/VisualSizer/
 
 3) Copy de HTML code to embed the video where you like! 
 
-
+<br><br><br><br><br><br><br>
 
 ### ToDos:
 
@@ -27,27 +27,28 @@ https://em3c2.github.io/VisualSizer/
 - [ ] add a buttom to mantain the 16:9 ratio
 
 
+<br><br><br>
 
-### First version:
+### v0.1:
 
 <img width="300px" src="./img/iter.png">
 
-### Second version:
+### v0.2:
 Better colors, added fonts, a bit more factoriced code.
 
 <img width="300px" src="./img/iter2.png">
 
-### Third version:
+### v0.3:
 Added "Copy" buttom and more style changes.
 
 <img width="300px" src="./img/iter3.png">
 
-### Fourth version:
+### v0.4:
 Changed the "resize" from CSS to JS vainilla, I learned to much doing this.
 
 <img width="300px" src="./img/iter4.png">
 
-### fifth version:
+### v0.5:
 Fixeds bugs.
 
 <img width="300px" src="./img/iter5.png">

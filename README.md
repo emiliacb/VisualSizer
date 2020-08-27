@@ -49,8 +49,8 @@ Changed the "resize" from CSS to JS vainilla, I learned to much doing this.
 <img width="300px" src="./img/iter4.png">
 
 ### v0.5:
-Fixeds bugs.
+Added Y resize, fixeds bugs.
 
-<img width="300px" src="./img/iter5.png">
+<img width="500px" src="./img/iter5.png">
 
 <img width="300px" src="./img/iter5m.png">

@@ -5,14 +5,14 @@ This app allow you to obtain the code to embed a youtube video, resizing it in a
 https://em3c2.github.io/VisualSizer/
 
 
-# How to use
+### How to use
 
 1) Paste a URL in the input and press "Paste video"
 
-Accepted url types: 
-- https://www.youtube.com/watch?v=IDIDIDIDID
-- https://youtu.be/IDIDIDIDID
-- https://www.youtube.com/embed/IDIDIDIDID
+- Accepted url types: 
+  - https://www.youtube.com/watch?v=IDIDIDIDID
+  - https://youtu.be/IDIDIDIDID
+  - https://www.youtube.com/embed/IDIDIDIDID
 
 2) Resize the video dragging to bottom and right.
 

@@ -1,4 +1,4 @@
-# VisualSizer
+# VisualSizer v1.0
 
 This app allow you to obtain the code to embed a youtube video, resizing it in a visual form.
 
